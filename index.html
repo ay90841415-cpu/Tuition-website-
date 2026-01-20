@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mera Tuition Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50">
+    <div class="p-8 text-center bg-blue-700 text-white shadow-md">
+        <h1 class="text-3xl font-bold">🚀 Mera Tuition Center</h1>
+        <p class="mt-2 text-blue-100">Ab seekhna hua aur bhi asaan!</p>
+    </div>
+
+    <div class="p-8 max-w-md mx-auto bg-white mt-10 rounded-2xl shadow-xl border-t-8 border-orange-500">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Free Demo Book Karein</h2>
+        
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-semibold text-gray-600">Student Ka Naam</label>
+                <input type="text" id="name" placeholder="Apna naam likhein" class="w-full p-3 border border-gray-300 rounded-lg mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-gray-600">Subject</label>
+                <select id="subject" class="w-full p-3 border border-gray-300 rounded-lg mt-1 outline-none">
+                    <option>Mathematics</option>
+                    <option>Science</option>
+                    <option>English Speaking</option>
+                    <option>Computer Basics</option>
+                </select>
+            </div>
+
+            <button onclick="sendToWhatsApp()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-lg mt-4 shadow-lg transition duration-300 flex items-center justify-center gap-2">
+                <span class="text-xl">💬</span> WhatsApp par Book Karein
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function sendToWhatsApp() {
+            // Yahan apna sahi mobile number likhein (Country code 91 ke saath)
+            const myNumber = "917037583913"; 
+            
+            const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+
+            if(name === "") {
+                alert("Kripya apna naam bharein!");
+                return;
+            }
+
+            // Message jo aapke WhatsApp par aayega
+            const message = `Namaste Sir, mera naam ${name} hai. Main aapke tuition center mein ${subject} ki demo class join karna chahta/chahti hoon.`;
+            
+            // WhatsApp link banana
+            const url = `https://wa.me/${myNumber}?text=${encodeURIComponent(message)}`;
+            
+            // Nayi window mein WhatsApp kholna
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
